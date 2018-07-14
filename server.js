@@ -55,7 +55,7 @@ app.get("/scrape", function (req, res) {
                 .attr("href");
             result.author = $(this)
                 .children(".article-info-extended")
-                .children(".byline")
+                .children(".byline heading byline")
                 .children(".style-orange")
                 .children("strong")
                 .text();
