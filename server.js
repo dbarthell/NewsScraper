@@ -49,16 +49,16 @@ app.get("/scrape", function (req, res) {
                 .children(".article-info-extended")
                 .children(".summary")
                 .text();
+            result.author = $(this)
+                .children(".article-info-extended")
+                .children(".byline")
+                .children("a")
+                .children("strong")
+                .text();
             result.link = $(this)
                 .children(".headline")
                 .children("a")
                 .attr("href");
-            result.author = $(this)
-                .children(".article-info-extended")
-                .children(".byline heading byline")
-                .children(".style-orange")
-                .children("strong")
-                .text();
 
             // Create a new Article using the `result` object built from scraping
             db.Article.create(result)
