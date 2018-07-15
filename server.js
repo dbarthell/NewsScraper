@@ -49,12 +49,6 @@ app.get("/scrape", function (req, res) {
                 .children(".article-info-extended")
                 .children(".summary")
                 .text();
-            result.author = $(this)
-                .children(".article-info-extended")
-                .children(".byline")
-                .children("a")
-                .children("strong")
-                .text();
             result.link = $(this)
                 .children(".headline")
                 .children("a")
@@ -70,6 +64,7 @@ app.get("/scrape", function (req, res) {
                     // If an error occurred, send it to the client
                     return res.json(err);
                 });
+
         });
 
         // If we were able to successfully scrape and save an Article, send a message to the client

@@ -3,7 +3,22 @@ $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].summary + "<br />" + data[i].author + "<br />" + data[i].link + "</p>");
+      var articleBody = $("<div>");
+      var articleTitle = $("<p data-id='" + data[i]._id + "'>");
+      articleTitle.text(data[i].title)
+      var articleSum = $("<p>");
+      articleSum.text(data[i].summary);
+      articleSum.addClass("articlesum");
+      var articleLinkBody = $("<p>");
+      var articleLink = $("<a>")
+      articleLink.text("golf.com" + data[i].link)
+      articleLink.attr("href", "http://golf.com" + data[i].link);
+      articleLinkBody.append(articleLink);
+      articleBody.append(articleTitle);
+      articleTitle.append(articleSum);
+      articleSum.append(articleLink);
+      console.log(articleBody);
+      $("#articles").append(articleBody);
     }
   });
   
