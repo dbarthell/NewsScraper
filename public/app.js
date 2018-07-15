@@ -83,6 +83,7 @@ $.getJSON("/articles", function(data) {
   
     // Also, remove the values entered in the input and textarea for note entry
     var deleteBtn = $("<button>X</button>");
+    deleteBtn.addClass("deletecomment");
     var comment = $("<div>")
     var commentBody = $("<p>")
     commentBody.text($("#bodyinput").val());
@@ -94,4 +95,10 @@ $.getJSON("/articles", function(data) {
     $("#titleinput").val("");
     $("#bodyinput").val("");
   });
-  
+
+  $(document).on("click", ".deletecomment", function() {
+
+    $(this).parent().empty();
+
+  });
+
