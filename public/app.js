@@ -17,7 +17,6 @@ $.getJSON("/articles", function(data) {
       articleBody.append(articleTitle);
       articleTitle.append(articleSum);
       articleSum.append(articleLink);
-      console.log(articleBody);
       $("#articles").append(articleBody);
     }
   });
@@ -77,11 +76,18 @@ $.getJSON("/articles", function(data) {
       .then(function(data) {
         // Log the response
         console.log(data);
+
         // Empty the notes section
         $("#notes").empty();
       });
   
     // Also, remove the values entered in the input and textarea for note entry
+    var comment = $("<div>")
+    var commentBody = $("<p>")
+    commentBody.text($("#bodyinput").val());
+    comment.append(commentBody);
+    $("#notes").append(comment);
+
     $("#titleinput").val("");
     $("#bodyinput").val("");
   });
