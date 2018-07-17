@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newscraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
@@ -33,7 +33,7 @@ mongoose.connect(MONGODB_URI);
 
 // Routes
 
-// A GET route for scraping the echoJS website
+// A GET route for scraping the golf.com website
 app.get("/scrape", function (req, res) {
     // First, we grab the body of the html with request
     axios.get("http://www.golf.com/").then(function (response) {
@@ -68,6 +68,7 @@ app.get("/scrape", function (req, res) {
                 .catch(function (err) {
                     // If an error occurred, send it to the client
                     return res.json(err);
+                    break;
                 });
 
         });
