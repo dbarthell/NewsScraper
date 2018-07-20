@@ -20,7 +20,7 @@ var ArticleSchema = new Schema({
   // `author` is of type String
   author: {
     type: String,
-    required: true
+    required: false
   },
   // `link` is required and of type String
   link: {
